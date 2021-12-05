@@ -1,6 +1,8 @@
-file = open("5.txt", "r")
-lines = [line for line in file.read().split("\n")]
-file.close()
+def read_file():
+    file = open("5.txt", "r")
+    lines = [line for line in file.read().split("\n")]
+    file.close()
+    return lines
 
 def map_terrain(vectors):
     terrain = {}
@@ -30,6 +32,9 @@ def count_intersections(terrain):
     return count
 
 def main():
+    lines = read_file()
+
+    
     #Part 1
     vectors = []
     for line in lines:
