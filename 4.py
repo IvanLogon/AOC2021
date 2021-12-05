@@ -65,5 +65,33 @@ def main():
         
 
     #Part 2
+    cardboards = []
+    for cardboard in get_cardboards(bingo):
+        cardboards.append([0,cardboard])
+    number = 0
+    lastwinner = None
+    for number in serie:
+        for cardboard in cardboards:
+            winner = False
+            if cardboard[0] == 0:
+                for row in cardboard[1]:
+                    for cell in row:
+                        if cell[0] == number:
+                            cell[1] = 1
+                            winner = check_row(row) or check_column(cardboard[1])
+                            if len(list(filter(lambda c: c[0] == 0, cardboards))) == 1 and winner:
+                                lastwinner = cardboard[1]
+                            break
+                        if winner: break
+                if winner: cardboard[0] = 1
+        if len(list(filter(lambda c:c[0] == 0, cardboards))) == 0: break
+    sum = 0 
+    for row in lastwinner:
+        print(row)
+        for cell in row:
+            if cell[1] == 0:
+                sum += cell[0]
+    print(sum * number)
+        
 
 main()
