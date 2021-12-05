@@ -18,8 +18,6 @@ for routine in routines:
         y += routine[1]
     else:
         y -= routine[1]
-
-
 print(x * y)
 
 
@@ -36,6 +34,4 @@ for routine in routines:
         aim += routine[1]
     else:
         aim -= routine[1]
-
-
 print(x * y)

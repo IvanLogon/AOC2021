@@ -17,9 +17,7 @@ def map_terrain(vectors):
                 terrain[(x1,y1)] = 1
             else:
                 terrain[(x1,y1)] += 1
-            
             exit = ((x1 == x2) and (y1 == y2))
-
             if x1 != x2: x1 += xstep
             if y1 != y2: y1 += ystep
     return terrain
@@ -43,7 +41,6 @@ def main():
         v2 = [int(number) for number in values[1].split(',')]
         if v1[0] == v2[0] or v1[1] == v2[1]:
             vectors.append([v1, v2])
-
     terrain = map_terrain(vectors)
     print(count_intersections(terrain))
 
@@ -58,7 +55,6 @@ def main():
             vectors.append([v1, v2])
         elif abs((v2[0] - v1[0]) // (v2[1] - v1[1])) == 1:
             vectors.append([v1, v2])
-
     terrain = map_terrain(vectors)
     print(count_intersections(terrain))
 
