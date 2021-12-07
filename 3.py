@@ -1,6 +1,6 @@
 def read_file():
     file = open("3.txt", "r")
-    numbers = [int(number,2) for number in file.read().split("\n")]
+    numbers = [int(number, 2) for number in file.read().split("\n")]
     file.close()
     return numbers
 
@@ -11,6 +11,7 @@ def count(copy, mask):
         if number & mask > 0:
             count += 1
     return count
+
 
 def filter_binary(copy, mask, value):
     j = 0
@@ -44,7 +45,6 @@ def get_co2(numbers):
 def main():
     numbers = read_file()
 
-
     # Part 1
     count = [0] * 12
     for number in numbers:
@@ -63,8 +63,8 @@ def main():
             epsilon += value
     print(gamma*epsilon)
 
-
     # Part 2
     print(get_oxygen(numbers) * get_co2(numbers))
+
 
 main()

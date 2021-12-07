@@ -11,7 +11,7 @@ def get_cardboards(bingo):
         lines = matrix.split("\n")
         cardboard = []
         for line in lines:
-            cardboard.append([[int(number),0] for number in line.split()])
+            cardboard.append([[int(number), 0] for number in line.split()])
         cardboards.append(cardboard)
     return cardboards
 
@@ -24,22 +24,21 @@ def check_row(row):
 
 
 def check_column(cardboard):
-    for i in range(0,5):
+    for i in range(0, 5):
         count = 0
         for row in cardboard:
             if row[i][1] == 1:
                 count += 1
         if count == 5:
             return True
-    return False        
+    return False
 
 
 def main():
     bingo = read_file()
     serie = [int(number) for number in bingo[0].split(',')]
 
-
-    #Part 1
+    # Part 1
     cardboards = get_cardboards(bingo)
     winnerCardboard = None
     number = 0
@@ -53,21 +52,23 @@ def main():
                         if winner:
                             winnerCardboard = cardboard
                         break
-                if winnerCardboard: break
-            if winnerCardboard: break
-        if winnerCardboard: break
-    sum = 0 
+                if winnerCardboard:
+                    break
+            if winnerCardboard:
+                break
+        if winnerCardboard:
+            break
+    sum = 0
     for row in winnerCardboard:
         for cell in row:
             if cell[1] == 0:
                 sum += cell[0]
     print(sum * number)
-        
 
-    #Part 2
+    # Part 2
     cardboards = []
     for cardboard in get_cardboards(bingo):
-        cardboards.append([0,cardboard])
+        cardboards.append([0, cardboard])
     number = 0
     lastwinner = None
     for number in serie:
@@ -78,20 +79,23 @@ def main():
                     for cell in row:
                         if cell[0] == number:
                             cell[1] = 1
-                            winner = check_row(row) or check_column(cardboard[1])
+                            winner = check_row(
+                                row) or check_column(cardboard[1])
                             if len(list(filter(lambda c: c[0] == 0, cardboards))) == 1 and winner:
                                 lastwinner = cardboard[1]
                             break
-                        if winner: break
-                if winner: cardboard[0] = 1
-        if len(list(filter(lambda c:c[0] == 0, cardboards))) == 0: break
-    sum = 0 
+                        if winner:
+                            break
+                if winner:
+                    cardboard[0] = 1
+        if len(list(filter(lambda c: c[0] == 0, cardboards))) == 0: break
+    sum = 0
     for row in lastwinner:
         print(row)
         for cell in row:
             if cell[1] == 0:
                 sum += cell[0]
     print(sum * number)
-        
+
 
 main()

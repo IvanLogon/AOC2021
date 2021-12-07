@@ -16,7 +16,7 @@ def initialize():
 def populate(timer, days):
     day = 0
     while day < days:
-        for i in range(0,10):
+        for i in range(0, 10):
             value = timer[i]
             if i == 0:
                 timer[7] += value
@@ -28,18 +28,19 @@ def populate(timer, days):
 
 
 def main():
-    #Part 1
+    # Part 1
     timer = initialize()
     # Cycle
     populate(timer, 80)
     # Count
     print(sum(timer))
 
-    #Part 2
+    # Part 2
     timer = initialize()
     # Cycle
     populate(timer, 256)
     # Count
     print(sum(timer))
+
 
 main()

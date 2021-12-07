@@ -2,7 +2,8 @@ import sys
 
 
 file = open("1.txt", "r")
-numbers = [int(number) for number in file.read().split("\n") if len(number) != 0]
+numbers = [int(number)
+           for number in file.read().split("\n") if len(number) != 0]
 file.close()
 
 

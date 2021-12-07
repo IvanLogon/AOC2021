@@ -13,18 +13,17 @@ def main():
     numbers = read_file()
     biggest = max(numbers)
 
-
-    #Part 1
+    # Part 1
     totals = []
     for i in range(0, biggest + 1):
         totals.append(sum(map(lambda n: abs(n - i), numbers)))
     print(min(totals))
 
-
-    #Part 2
+    # Part 2
     totals = []
     for i in range(0, biggest + 1):
-        totals.append(sum(map(lambda n: fuel_calculation(abs(n - i)), numbers)))
+        totals.append(
+            sum(map(lambda n: fuel_calculation(abs(n - i)), numbers)))
     print(min(totals))
 
 

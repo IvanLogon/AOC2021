@@ -4,6 +4,7 @@ def read_file():
     file.close()
     return lines
 
+
 def map_terrain(vectors):
     terrain = {}
     for vector in vectors:
@@ -13,14 +14,17 @@ def map_terrain(vectors):
         ystep = 1 if y1 <= y2 else -1
         exit = False
         while not exit:
-            if terrain.get((x1,y1)) is None:
-                terrain[(x1,y1)] = 1
+            if terrain.get((x1, y1)) is None:
+                terrain[(x1, y1)] = 1
             else:
-                terrain[(x1,y1)] += 1
+                terrain[(x1, y1)] += 1
             exit = ((x1 == x2) and (y1 == y2))
-            if x1 != x2: x1 += xstep
-            if y1 != y2: y1 += ystep
+            if x1 != x2:
+                x1 += xstep
+            if y1 != y2:
+                y1 += ystep
     return terrain
+
 
 def count_intersections(terrain):
     count = 0
@@ -29,11 +33,11 @@ def count_intersections(terrain):
             count += 1
     return count
 
+
 def main():
     lines = read_file()
 
-    
-    #Part 1
+    # Part 1
     vectors = []
     for line in lines:
         values = line.split(' -> ')
@@ -44,8 +48,7 @@ def main():
     terrain = map_terrain(vectors)
     print(count_intersections(terrain))
 
-
-    #Part 2
+    # Part 2
     vectors = []
     for line in lines:
         values = line.split(' -> ')
@@ -57,5 +60,6 @@ def main():
             vectors.append([v1, v2])
     terrain = map_terrain(vectors)
     print(count_intersections(terrain))
+
 
 main()
