@@ -53,9 +53,9 @@ def bind_points(matrix, x, y):
 
 
 def main():
+    # Part 1
     matrix = read_file()
     points = bind_points(matrix, len(matrix), len(matrix[0]))
-    # Part 1
     lights = []
     day = 0
     while day < 100:
@@ -71,8 +71,8 @@ def main():
     matrix = read_file()
     points = bind_points(matrix, len(matrix), len(matrix[0]))
     day = 0
-    all_zeroes = False
     size = len(matrix) * len(matrix[0])
+    all_zeroes = False
     while not all_zeroes:
         for point in points:
             point.increase_light()
